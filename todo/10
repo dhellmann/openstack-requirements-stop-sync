@@ -1,0 +1,10 @@
+mogan
+monasca-api
+monasca-common
+monasca-log-api
+monasca-notification
+monasca-persister
+monasca-statsd
+monasca-tempest-plugin
+monasca-transform
+monasca-ui

@@ -1,0 +1,10 @@
+networking-bgpvpn
+networking-dpm
+networking-fujitsu
+networking-generic-switch
+networking-hpe
+networking-hyperv
+networking-l2gw
+networking-l2gw-tempest-plugin
+networking-midonet
+networking-odl

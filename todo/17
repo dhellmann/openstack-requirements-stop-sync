@@ -1,0 +1,10 @@
+openstack-ansible-os_glance
+openstack-ansible-os_gnocchi
+openstack-ansible-os_heat
+openstack-ansible-os_horizon
+openstack-ansible-os_ironic
+openstack-ansible-os_keystone
+openstack-ansible-os_magnum
+openstack-ansible-os_molteniron
+openstack-ansible-os_monasca
+openstack-ansible-os_monasca-agent

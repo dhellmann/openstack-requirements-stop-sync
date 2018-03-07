@@ -1,0 +1,10 @@
+karbor
+karbor-dashboard
+keystone
+keystone-tempest-plugin
+keystoneauth
+keystonemiddleware
+kingbird
+kolla
+kolla-ansible
+kolla-kubernetes

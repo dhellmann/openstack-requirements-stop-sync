@@ -1,0 +1,10 @@
+kosmos
+kuryr
+kuryr-kubernetes
+kuryr-libnetwork
+kuryr-tempest-plugin
+ldappool
+magnum
+magnum-tempest-plugin
+magnum-ui
+manila

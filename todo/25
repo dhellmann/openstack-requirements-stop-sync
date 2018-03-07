@@ -1,0 +1,10 @@
+python-heatclient
+python-ironic-inspector-client
+python-ironicclient
+python-karborclient
+python-keystoneclient
+python-kingbirdclient
+python-magnumclient
+python-manilaclient
+python-masakariclient
+python-mistralclient

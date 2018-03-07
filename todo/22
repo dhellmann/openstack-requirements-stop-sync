@@ -1,0 +1,10 @@
+oslo.context
+oslo.db
+oslo.i18n
+oslo.log
+oslo.messaging
+oslo.middleware
+oslo.policy
+oslo.privsep
+oslo.reports
+oslo.rootwrap

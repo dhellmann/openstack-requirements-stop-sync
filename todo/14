@@ -1,0 +1,10 @@
+neutron-lib
+neutron-tempest-plugin
+neutron-vpnaas
+neutron-vpnaas-dashboard
+nova
+nova-dpm
+nova-lxd
+nova-powervm
+octavia
+octavia-dashboard

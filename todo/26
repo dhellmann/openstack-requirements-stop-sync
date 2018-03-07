@@ -1,0 +1,10 @@
+python-moganclient
+python-monascaclient
+python-muranoclient
+python-neutronclient
+python-novaclient
+python-octaviaclient
+python-oneviewclient
+python-openstackclient
+python-openstacksdk
+python-qinlingclient

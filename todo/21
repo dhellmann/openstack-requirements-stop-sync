@@ -1,0 +1,10 @@
+os-service-types
+os-testr
+os-traits
+os-vif
+os-win
+os-xenapi
+osc-lib
+oslo.cache
+oslo.concurrency
+oslo.config

@@ -1,0 +1,10 @@
+octavia-tempest-plugin
+openstack-ansible
+openstack-ansible-apt_package_pinning
+openstack-ansible-ceph_client
+openstack-ansible-galera_client
+openstack-ansible-galera_server
+openstack-ansible-haproxy_server
+openstack-ansible-lxc_container_create
+openstack-ansible-lxc_hosts
+openstack-ansible-memcached_server

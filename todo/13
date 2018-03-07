@@ -1,0 +1,10 @@
+networking-ovn
+networking-powervm
+networking-sfc
+networking-vsphere
+neutron
+neutron-dynamic-routing
+neutron-fwaas
+neutron-fwaas-dashboard
+neutron-lbaas
+neutron-lbaas-dashboard

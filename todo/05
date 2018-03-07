@@ -1,0 +1,10 @@
+gce-api
+glance
+glance_store
+glare
+heat
+heat-agents
+heat-dashboard
+heat-tempest-plugin
+heat-translator
+horizon

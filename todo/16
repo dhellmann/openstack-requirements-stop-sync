@@ -1,0 +1,10 @@
+openstack-ansible-openstack_hosts
+openstack-ansible-openstack_openrc
+openstack-ansible-ops
+openstack-ansible-os_almanach
+openstack-ansible-os_aodh
+openstack-ansible-os_barbican
+openstack-ansible-os_ceilometer
+openstack-ansible-os_cinder
+openstack-ansible-os_cloudkitty
+openstack-ansible-os_designate

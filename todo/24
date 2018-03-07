@@ -1,0 +1,10 @@
+pymod2pkg
+python-barbicanclient
+python-blazarclient
+python-brick-cinderclient-ext
+python-cinderclient
+python-congressclient
+python-designateclient
+python-freezerclient
+python-glanceclient
+python-glareclient
