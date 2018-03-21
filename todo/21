@@ -7,4 +7,3 @@ os-xenapi
 osc-lib
 oslo.cache
 oslo.concurrency
-oslo.config
