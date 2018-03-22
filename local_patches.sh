@@ -27,7 +27,7 @@ function create_project_file {
     local outfile=$1
 
     echo "Creating $outfile"
-    cat - > $outfile <<EOF
+    cat - >$outfile <<EOF
 - project:
     check:
       jobs:
@@ -59,7 +59,7 @@ function update_zuul_d {
         python3 $bindir/add_job.py $to_update
     fi
 
-    git -C $repo_dir add $to_update
+    git -C $repo_dir add -f $to_update
 }
 
 function update_zuul_yaml {
@@ -73,7 +73,7 @@ function update_zuul_yaml {
         python3 $bindir/add_job.py $repo_dir/$zuul_yaml
     fi
 
-    git -C $repo_dir add $zuul_yaml
+    git -C $repo_dir add -f $zuul_yaml
 }
 
 function update_zuul {
@@ -116,7 +116,7 @@ deps =
   -r{toxinidir}/test-requirements.txt
 $reqfile
 EOF
-    git -C $repo_dir add tox.ini
+    git -C $repo_dir add -f tox.ini
 }
 
 function create_lower_constraints {
@@ -128,7 +128,7 @@ function create_lower_constraints {
         tox -e lower-constraints --notest -r &&
         .tox/lower-constraints/bin/pip freeze | grep -v git.openstack.org > lower-constraints.txt
     )
-    git -C $repo_dir add lower-constraints.txt
+    git -C $repo_dir add -f lower-constraints.txt
 }
 
 function commit {
