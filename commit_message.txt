@@ -11,4 +11,5 @@ Add openstack-tox-lower-constraints job to the zuul configuration.
 See http://lists.openstack.org/pipermail/openstack-dev/2018-March/128352.html
 for more details.
 
+Depends-On: https://review.openstack.org/555034
 Signed-off-by: Doug Hellmann <doug@doughellmann.com>
