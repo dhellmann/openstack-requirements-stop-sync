@@ -29,7 +29,7 @@ function update_zuul_d {
 
     echo "Editing $repo_dir/$zuul_d/project.yaml"
     python3 $bindir/add_job.py $repo_dir/$zuul_d/project.yaml
-    git add $repo_dir/$zuul_d/project.yaml
+    git -C $repo_dir add $zuul_d/project.yaml
 }
 
 function update_zuul_yaml {
@@ -52,7 +52,7 @@ EOF
         python3 $bindir/add_job.py $repo_dir/$zuul_yaml
     fi
 
-    git add $repo_dir/$zuul_yaml
+    git -C $repo_dir add $zuul_yaml
 }
 
 function update_zuul {
@@ -88,7 +88,7 @@ deps =
   -r{toxinidir}/test-requirements.txt
   -r{toxinidir}/requirements.txt
 EOF
-    git add $ini_file
+    git -C $repo_dir add tox.ini
 }
 
 function create_lower_constraints {
@@ -98,9 +98,9 @@ function create_lower_constraints {
     cp $repo_root/requirements/lower-constraints.txt $repo_dir/lower-constraints.txt
     (cd $repo_dir &&
         tox -e lower-constraints --notest &&
-        .tox/lower-constraints/bin/pip freeze | grep -v git.openstack.org > lower-constraints.txt &&
-        git add lower-constraints.txt
+        .tox/lower-constraints/bin/pip freeze | grep -v git.openstack.org > lower-constraints.txt
     )
+    git -C $repo_dir add lower-constraints.txt
 }
 
 function commit {
@@ -108,6 +108,8 @@ function commit {
 
     (cd $repo_dir && git commit -F $bindir/commit_message.txt)
 }
+
+set -e
 
 for bf in $batchfiles;
 do
@@ -122,7 +124,5 @@ do
         create_lower_constraints $repo_dir
 
         commit $repo_dir
-
-        break
     done
 done
