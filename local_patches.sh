@@ -23,22 +23,11 @@ function get_repo_type {
     fi
 }
 
-function update_zuul_d {
-    local repo_dir=$1
-    local zuul_d=$2
+function create_project_file {
+    local outfile=$1
 
-    echo "Editing $repo_dir/$zuul_d/project.yaml"
-    python3 $bindir/add_job.py $repo_dir/$zuul_d/project.yaml
-    git -C $repo_dir add $zuul_d/project.yaml
-}
-
-function update_zuul_yaml {
-    local repo_dir=$1
-    local zuul_yaml=$2
-
-    if [[ ! -e $repo_dir/$zuul_yaml ]]; then
-        echo "Creating $repo_dir/$zuul_yaml"
-        cat - > $repo_dir/$zuul_yaml <<EOF
+    echo "Creating $outfile"
+    cat - > $outfile <<EOF
 - project:
     check:
       jobs:
@@ -47,6 +36,28 @@ function update_zuul_yaml {
       jobs:
         - openstack-tox-lower-constraints
 EOF
+}
+
+function update_zuul_d {
+    local repo_dir=$1
+    local zuul_d=$2
+
+    if [[ ! -e $repo_dir/$zuul_d/project.yaml ]]; then
+        create_project_file $repo_dir/$zuul_d/project.yaml
+    else
+        echo "Editing $repo_dir/$zuul_d/project.yaml"
+        python3 $bindir/add_job.py $repo_dir/$zuul_d/project.yaml
+    fi
+
+    git -C $repo_dir add $zuul_d/project.yaml
+}
+
+function update_zuul_yaml {
+    local repo_dir=$1
+    local zuul_yaml=$2
+
+    if [[ ! -e $repo_dir/$zuul_yaml ]]; then
+        create_project_file $repo_dir/$zuul_yaml
     else
         echo "Editing $repo_dir/$zuul_yaml"
         python3 $bindir/add_job.py $repo_dir/$zuul_yaml
