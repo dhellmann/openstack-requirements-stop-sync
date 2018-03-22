@@ -26,5 +26,5 @@ do
         sleep 10
     done
 
-    git -C $bindir mv local/$(basename $bf) submitted/
+    $bindir/promote.sh $bf
 done
