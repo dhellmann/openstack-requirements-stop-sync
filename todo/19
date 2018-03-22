@@ -7,4 +7,3 @@ openstack-ansible-repo_build
 openstack-ansible-repo_server
 openstack-ansible-rsyslog_client
 openstack-ansible-rsyslog_server
-openstack-ansible-specs
