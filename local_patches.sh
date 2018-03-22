@@ -116,16 +116,94 @@ function commit {
     (cd $repo_dir && git commit -F $bindir/commit_message.txt)
 }
 
+function clone {
+    local name
+    local localdir
+    local longname
+    local url
+
+    for name in "$@"
+    do
+        if [[ ! $name =~ / ]]; then
+            longname=$(ssh review.openstack.org -p 29418 gerrit ls-projects \
+                | grep "/$name\$")
+            if [[ -z "$longname" ]]; then
+                # This is not an OpenStack repository.  Look at the
+                # local caches for github and bitbucket.
+                longname=$(ls -d $OS_REPO_DIR/*/$name)
+                if [[ -d $longname ]]; then
+                    echo "Cloning $name from $longname"
+                    git clone $longname
+                    url=$(cd $longname && git config --get remote.origin.url)
+                    (cd $name && \
+                            git remote set-url origin "$url")
+                    url=$(cd $longname && git config --get remote.dhellmann.url)
+                    if [[ ! -z "$url" ]]; then
+                        (cd $name && \
+                                git remote add dhellmann "$url" && \
+                                git remote update dhellmann)
+                    fi
+                    (cd $name && \
+                            git fetch --tags origin && \
+                            git checkout master && \
+                            git hooks --install)
+                    return $?
+                else
+                    echo "Could not find $name in $OS_REPO_DIR"
+                    return 1
+                fi
+            fi
+        else
+            longname="$name"
+            name=$(basename $name)
+        fi
+        if [[ -d $name ]]; then
+            echo "$name already exists"
+            continue
+        fi
+        ~/tools/zuul/bin/zuul-cloner \
+            --branch master \
+            git://git.openstack.org \
+            $longname
+        (cd "$longname" && \
+            git fetch --tags origin && \
+            git checkout master && \
+            git hooks --install && \
+            git review -s)
+        mv $longname $name
+        rmdir $(dirname $longname) || echo "Could not remove $(dirname $longname)"
+    done
+}
+
+
+function clone_repo {
+    local repo=$1
+    local outdir=$2
+
+    if [[ -d $outdir ]]; then
+        echo "Local clone already exists"
+        return
+    fi
+    echo "Cloning $repo"
+    local pardir=$(dirname $outdir)
+    mkdir -p $pardir
+    (cd $pardir && clone $repo)
+    git -C $outdir checkout -b requirements-stop-syncing
+}
+
 set -e
 
 for bf in $batchfiles;
 do
+    bf_dir=$repo_root/$(basename $bf)
+    mkdir -p $bf_dir
     for repo in $(cat $bf);
     do
-        repo_dir=$repo_root/$repo
+        repo_dir=$bf_dir/$repo
         echo
         echo $repo_dir
 
+        clone_repo $repo $repo_dir
         update_zuul $repo_dir
         update_tox_ini $repo_dir
         create_lower_constraints $repo_dir
