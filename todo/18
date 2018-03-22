@@ -6,5 +6,4 @@ openstack-ansible-os_rally
 openstack-ansible-os_sahara
 openstack-ansible-os_searchlight
 openstack-ansible-os_swift
-openstack-ansible-os_tempest
 openstack-ansible-os_trove

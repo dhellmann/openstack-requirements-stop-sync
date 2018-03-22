@@ -1,5 +1,4 @@
 neutron-lib
-neutron-tempest-plugin
 neutron-vpnaas
 neutron-vpnaas-dashboard
 nova

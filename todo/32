@@ -1,10 +1,6 @@
 vitrage
-vitrage-tempest-plugin
 vmware-nsx
-vmware-nsx-tempest-plugin
 vmware-nsxlib
 watcher
 watcher-dashboard
-watcher-tempest-plugin
 zaqar
-zaqar-tempest-plugin

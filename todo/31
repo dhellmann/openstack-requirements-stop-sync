@@ -1,10 +1,8 @@
 tricircle
 trio2o
 tripleo-common
-tripleo-common-tempest-plugin
 tripleo-heat-templates
 tripleo-validations
 trove
-trove-tempest-plugin
 valence
 virtualbmc

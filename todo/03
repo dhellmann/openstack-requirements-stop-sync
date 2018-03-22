@@ -2,9 +2,7 @@ cliff
 compute-hyperv
 congress
 congress-dashboard
-congress-tempest-plugin
 debtcollector
 designate
 designate-dashboard
-designate-tempest-plugin
 diskimage-builder

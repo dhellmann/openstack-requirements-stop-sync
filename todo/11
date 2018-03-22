@@ -3,7 +3,6 @@ murano
 murano-agent
 murano-dashboard
 murano-pkg-check
-murano-tempest-plugin
 nemesis
 networking-arista
 networking-bagpipe

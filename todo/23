@@ -4,7 +4,6 @@ oslo.utils
 oslo.versionedobjects
 oslo.vmware
 oslotest
-oswin-tempest-plugin
 ovsdbapp
 patrole
 pycadf

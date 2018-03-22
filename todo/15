@@ -1,4 +1,3 @@
-octavia-tempest-plugin
 openstack-ansible
 openstack-ansible-apt_package_pinning
 openstack-ansible-ceph_client
