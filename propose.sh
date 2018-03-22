@@ -19,5 +19,8 @@ do
         echo $repo_dir
 
         git -C $repo_dir review
+        sleep 10
     done
+
+    git -C $bindir mv todo/$(basename $bf) submitted/
 done
