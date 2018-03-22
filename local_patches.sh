@@ -97,7 +97,7 @@ function create_lower_constraints {
     rm -f $repo_dir/lower-constraints.txt
     cp $repo_root/requirements/lower-constraints.txt $repo_dir/lower-constraints.txt
     (cd $repo_dir &&
-        tox -e lower-constraints --notest &&
+        tox -e lower-constraints --notest -r &&
         .tox/lower-constraints/bin/pip freeze | grep -v git.openstack.org > lower-constraints.txt
     )
     git -C $repo_dir add lower-constraints.txt
