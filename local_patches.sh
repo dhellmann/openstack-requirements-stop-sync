@@ -79,6 +79,13 @@ function update_tox_ini {
         return
     fi
 
+    reqfile=""
+    if [[ -f "$repo_dir/requirements.txt" ]]; then
+        reqfile="  -r{toxinidir}/requirements.txt"
+    else
+        echo "No requirements.txt, leaving out of tox.ini"
+    fi
+
     cat - >> $ini_file <<EOF
 
 [testenv:lower-constraints]
@@ -86,7 +93,7 @@ basepython = python3
 deps =
   -c{toxinidir}/lower-constraints.txt
   -r{toxinidir}/test-requirements.txt
-  -r{toxinidir}/requirements.txt
+$reqfile
 EOF
     git -C $repo_dir add tox.ini
 }
