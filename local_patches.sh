@@ -42,14 +42,24 @@ function update_zuul_d {
     local repo_dir=$1
     local zuul_d=$2
 
-    if [[ ! -e $repo_dir/$zuul_d/project.yaml ]]; then
-        create_project_file $repo_dir/$zuul_d/project.yaml
+    if grep -q -- "- project:" $repo_dir/$zuul_d/job.yaml;
+    then
+        local to_update=$repo_dir/$zuul_d/job.yaml
+    elif grep -q -- "- project:" $repo_dir/$zuul_d/jobs.yaml;
+    then
+        local to_update=$repo_dir/$zuul_d/jobs.yaml
     else
-        echo "Editing $repo_dir/$zuul_d/project.yaml"
-        python3 $bindir/add_job.py $repo_dir/$zuul_d/project.yaml
+        local to_update=$repo_dir/$zuul_d/project.yaml
     fi
 
-    git -C $repo_dir add $zuul_d/project.yaml
+    if [[ ! -e $to_update ]]; then
+        create_project_file $to_update
+    else
+        echo "Editing $to_update"
+        python3 $bindir/add_job.py $to_update
+    fi
+
+    git -C $repo_dir add $to_update
 }
 
 function update_zuul_yaml {
