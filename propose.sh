@@ -17,6 +17,7 @@ for bf in $batchfiles;
 do
     bf_dir=$repo_root/$(basename $bf)
 
+    echo $bf
     cat $bf
     echo "Press return to continue"
     read ignored
