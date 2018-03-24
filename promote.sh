@@ -28,3 +28,5 @@ do
     git -C $bindir mv $bf ${next}/
     git -C $bindir commit -m "promoted batch $(basename $bf)"
 done
+
+$bindir/counts.sh
