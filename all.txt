@@ -122,8 +122,6 @@ octavia
 octavia-dashboard
 openstack-doc-tools
 openstackclient
-openstackdocstheme
-os-api-ref
 os-apply-config
 os-brick
 os-client-config
