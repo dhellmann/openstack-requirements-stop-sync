@@ -16,6 +16,11 @@ set -e
 for bf in $batchfiles;
 do
     bf_dir=$repo_root/$(basename $bf)
+
+    cat $bf
+    echo "Press return to continue"
+    read ignored
+
     for repo in $(cat $bf);
     do
         repo_dir=$bf_dir/$repo
