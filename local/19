@@ -1,9 +1,0 @@
-openstack-ansible-os_watcher
-openstack-ansible-os_zaqar
-openstack-ansible-pip_install
-openstack-ansible-plugins
-openstack-ansible-rabbitmq_server
-openstack-ansible-repo_build
-openstack-ansible-repo_server
-openstack-ansible-rsyslog_client
-openstack-ansible-rsyslog_server
