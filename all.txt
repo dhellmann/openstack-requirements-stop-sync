@@ -200,7 +200,6 @@ python-watcherclient
 python-zaqarclient
 python-zunclient
 qinling
-requirements
 sahara
 sahara-dashboard
 sahara-extra
