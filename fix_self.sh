@@ -13,7 +13,7 @@ do
     echo $repo $batch
     cd $repo_root/$batch/$repo
     name=$(python setup.py --name 2>/dev/null)
-    sed -i -e "/^${name}\$/d" lower-constraints.txt
+    sed -i -e "/^${name}=/d" lower-constraints.txt
     git add lower-constraints.txt
     git commit --amend --no-edit
     if [[ -f $bindir/submitted/$batch ]];
